@@ -395,6 +395,75 @@
     .gallery img { height: auto; max-height: 380px; }
   }
 
+  /* ===== PROJECTS ===== */
+  .project-entry {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    padding: 28px;
+    margin-bottom: 24px;
+  }
+  .project-entry:last-child { margin-bottom: 0; }
+  .project-badge {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    background: #fef3c7;
+    color: var(--gold);
+    border: 1px solid #f6c057;
+    padding: 8px 18px;
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    margin-bottom: 14px;
+  }
+  .project-title {
+    font-size: 1.35rem;
+    color: var(--primary-dark);
+    margin-bottom: 6px;
+  }
+  .project-desc {
+    color: var(--muted);
+    font-size: 0.97rem;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    max-width: 900px;
+  }
+  .project-images {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .project-images figure {
+    background: var(--surface-alt);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .project-images img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    background: #fff;
+  }
+  .project-images figcaption {
+    padding: 8px 12px;
+    color: var(--muted);
+    font-size: 0.82rem;
+    font-weight: 600;
+  }
+  .stack-label {
+    display: block;
+    font-size: 0.78rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 10px;
+    margin-top: 18px;
+  }
+
   @media print {
     .topbar, .hero-actions, .gallery { display: none; }
     body { background: #fff; }
@@ -414,6 +483,7 @@
         <li><a href="#sobre">Sobre</a></li>
         <li><a href="#experiencia">Experiência</a></li>
         <li><a href="#conquistas">Conquistas</a></li>
+        <li><a href="#projetos">Projetos</a></li>
         <li><a href="#habilidades">Habilidades</a></li>
         <li><a href="#formacao">Formação</a></li>
         <li><a href="#contato">Contato</a></li>
@@ -572,6 +642,77 @@
           </div>
         </article>
       </div>
+    </section>
+
+    <section class="section" id="projetos">
+      <div class="section-header">
+        <h2>Projetos</h2>
+        <div class="section-kicker">Desenvolvimento</div>
+      </div>
+
+      <!-- SAFRASENSE -->
+      <div class="project-entry">
+        <span class="project-badge">5º Lugar · Hackathon CopernicusLAC 2026</span>
+        <h3 class="project-title">SafraSense — Monitoramento Agrícola por Satélite</h3>
+        <div class="meta">Equipe SafraSense · CopernicusLAC / ESA · 2026</div>
+        <p class="project-desc">
+          Plataforma web full-stack que democratiza o acesso a seguros agrícolas para pequenos e médios produtores rurais.
+          O agricultor desenha o polígono de sua propriedade no mapa, cruza com dados oficiais do CAR (Cadastro Ambiental Rural)
+          e recebe um dashboard com o índice de vegetação NDVI calculado a partir de imagens reais do satélite Sentinel-2 da ESA.
+          O sistema gera um laudo satelital em PDF validável por seguradoras como Swiss Re e Mapfre.
+        </p>
+
+        <!-- Imagens do projeto — descomente e adicione os arquivos quando disponíveis
+        <div class="project-images">
+          <figure>
+            <img src="safrasense-dashboard.png" alt="SafraSense — Dashboard NDVI">
+            <figcaption>Dashboard de monitoramento NDVI</figcaption>
+          </figure>
+          <figure>
+            <img src="safrasense-mapa.png" alt="SafraSense — Mapa interativo da propriedade">
+            <figcaption>Mapa interativo da propriedade</figcaption>
+          </figure>
+        </div>
+        -->
+
+        <div class="grid-2">
+          <article class="item-card">
+            <h3>Back-end</h3>
+            <div class="meta">FastAPI · Python · Copernicus Sentinel Hub · GeoPandas · NumPy</div>
+            <ul style="padding-left: 20px; color: var(--muted); margin-top: 10px; font-size: 0.95rem;">
+              <li>API REST com endpoints <strong>/buscar-cars</strong> e <strong>/ndvi</strong> em FastAPI (Python)</li>
+              <li>Integração com Copernicus Data Space (ESA) via sentinelhub SDK para consulta de imagens Sentinel-2 L2A</li>
+              <li>Leitura espacial eficiente do shapefile CAR (~3 GB) com GeoPandas + Shapely: bounding box antes da interseção completa</li>
+              <li>Cálculo de estatísticas NDVI (mín / med / máx) por semana com NumPy</li>
+              <li>Série histórica de 52 semanas para detecção antecipada de estresse hídrico</li>
+            </ul>
+          </article>
+
+          <article class="item-card">
+            <h3>Front-end</h3>
+            <div class="meta">React 19 · TypeScript · TanStack Router · Leaflet · Firebase · jsPDF</div>
+            <ul style="padding-left: 20px; color: var(--muted); margin-top: 10px; font-size: 0.95rem;">
+              <li>Dashboard de status visual: <strong>Saudável / Atenção / Emergência</strong> baseado no índice NDVI</li>
+              <li>Mapa interativo (Leaflet + React-Leaflet) para desenho do polígono da propriedade</li>
+              <li>Gráfico histórico semanal de NDVI dos últimos 12 meses (Recharts)</li>
+              <li>Geração de laudo em PDF para seguradoras (jsPDF)</li>
+              <li>Autenticação e armazenamento com Firebase (Auth + Firestore)</li>
+              <li>Suporte multilíngue PT / ES / EN — atende Brasil, Paraguai e Bolívia</li>
+            </ul>
+          </article>
+        </div>
+
+        <strong class="stack-label">Stack completa</strong>
+        <ul class="skill-list">
+          <li>Python</li><li>FastAPI</li><li>GeoPandas</li><li>NumPy</li>
+          <li>Copernicus / Sentinel-2</li><li>React 19</li><li>TypeScript</li>
+          <li>TanStack Router</li><li>TanStack Query</li><li>Leaflet</li>
+          <li>Recharts</li><li>Firebase</li><li>jsPDF</li><li>Tailwind CSS v4</li>
+        </ul>
+      </div>
+
+      <!-- PRÓXIMOS PROJETOS: copie o bloco .project-entry acima e adicione aqui -->
+
     </section>
 
     <section class="section" id="habilidades">

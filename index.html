@@ -1252,6 +1252,58 @@
     .lightbox-close { top: -45px; right: 10px; }
   }
 
+  /* ===== PROJECT SECTION ===== */
+  .proj-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+    padding-top: 2.5rem;
+    border-top: 1px dashed var(--neon-purple-glow);
+  }
+  .proj-block {
+    background: rgba(10, 10, 18, 0.7);
+    padding: 1.5rem;
+  }
+  .proj-block.back { border: 1px solid rgba(0, 255, 65, 0.25); }
+  .proj-block.front { border: 1px solid rgba(189, 0, 255, 0.25); }
+  .proj-block-tag {
+    font-size: 0.78rem;
+    letter-spacing: 3px;
+    margin-bottom: 0.8rem;
+  }
+  .proj-block.back .proj-block-tag { color: var(--neon-purple); }
+  .proj-block.front .proj-block-tag { color: var(--neon-green); }
+  .proj-block-title {
+    font-family: 'Major Mono Display', monospace;
+    font-size: 0.95rem;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+  }
+  .proj-block.back .proj-block-title { color: var(--neon-green); text-shadow: 0 0 8px var(--neon-green-glow); }
+  .proj-block.front .proj-block-title { color: var(--neon-purple); text-shadow: 0 0 8px var(--neon-purple-glow); }
+  .proj-list {
+    list-style: none;
+    padding: 0;
+  }
+  .proj-list li {
+    position: relative;
+    padding-left: 1.4rem;
+    margin-bottom: 0.6rem;
+    font-size: 0.88rem;
+    line-height: 1.5;
+  }
+  .proj-list li::before {
+    content: '> ';
+    position: absolute;
+    left: 0;
+  }
+  .proj-block.back .proj-list li::before { color: var(--neon-purple); }
+  .proj-block.front .proj-list li::before { color: var(--neon-green); }
+  @media (max-width: 768px) {
+    .proj-grid { grid-template-columns: 1fr; }
+  }
+
   /* ===== SELECTION ===== */
   ::selection {
     background: var(--neon-green);
@@ -1271,6 +1323,7 @@
     <li><a href="#sobre">Sobre</a></li>
     <li><a href="#exp">Experiência</a></li>
     <li><a href="#conquistas">Conquistas</a></li>
+    <li><a href="#projetos">Projetos</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#edu">Formação</a></li>
     <li><a href="#contato">Contato</a></li>
@@ -1542,6 +1595,132 @@
       </div>
     </div>
   </div>
+</section>
+
+<!-- PROJETOS -->
+<section id="projetos" class="reveal">
+  <div class="section-header">
+    <div class="tag">// PROJECTS.EXE</div>
+    <h2>PROJETOS</h2>
+  </div>
+
+  <div class="achievement-card">
+    <div class="achievement-grid">
+      <div class="trophy-container">
+        <div class="trophy-rays"></div>
+        <svg class="trophy-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="ssGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#00ff41"/>
+              <stop offset="100%" stop-color="#00fff7"/>
+            </linearGradient>
+          </defs>
+          <!-- Satellite body -->
+          <rect x="38" y="12" width="24" height="16" rx="2" stroke="url(#ssGrad)" stroke-width="2.5" fill="none"/>
+          <!-- Solar panels -->
+          <rect x="18" y="15" width="18" height="10" rx="1" stroke="url(#ssGrad)" stroke-width="2" fill="rgba(0,255,65,0.12)"/>
+          <rect x="64" y="15" width="18" height="10" rx="1" stroke="url(#ssGrad)" stroke-width="2" fill="rgba(0,255,65,0.12)"/>
+          <line x1="36" y1="20" x2="38" y2="20" stroke="url(#ssGrad)" stroke-width="2"/>
+          <line x1="62" y1="20" x2="64" y2="20" stroke="url(#ssGrad)" stroke-width="2"/>
+          <!-- Signal beam -->
+          <line x1="50" y1="28" x2="50" y2="46" stroke="url(#ssGrad)" stroke-width="1.5" stroke-dasharray="3 2.5"/>
+          <!-- Signal dot received -->
+          <circle cx="50" cy="47" r="3" fill="url(#ssGrad)" opacity="0.9"/>
+          <circle cx="50" cy="47" r="7" stroke="url(#ssGrad)" stroke-width="1" fill="none" opacity="0.5"/>
+          <!-- Earth surface / field -->
+          <path d="M 18 74 Q 50 56 82 74" stroke="url(#ssGrad)" stroke-width="2.5" fill="none"/>
+          <path d="M 26 82 Q 50 67 74 82" stroke="url(#ssGrad)" stroke-width="1.5" fill="none" opacity="0.7"/>
+          <path d="M 32 90 Q 50 76 68 90" stroke="url(#ssGrad)" stroke-width="1.5" fill="none" opacity="0.4"/>
+        </svg>
+      </div>
+
+      <div class="achievement-info">
+        <div class="award-badge">// 5º LUGAR · COPERNICUSLAC 2026</div>
+        <h3>SAFRASENSE</h3>
+        <div class="award-year">// MONITORAMENTO AGRÍCOLA POR SATÉLITE · SENTINEL-2 ESA</div>
+        <p>
+          Plataforma web full-stack que democratiza o acesso a <span style="color:var(--neon-green);text-shadow:0 0 8px var(--neon-green-glow);">seguros agrícolas</span>
+          para pequenos e médios produtores rurais. O agricultor desenha o polígono de sua propriedade no mapa, cruza com o
+          <span style="color:var(--neon-purple);text-shadow:0 0 8px var(--neon-purple-glow);">CAR (Cadastro Ambiental Rural)</span>
+          e recebe um dashboard com o índice NDVI calculado a partir de imagens reais do satélite Sentinel-2 da ESA.
+          Gera laudos em PDF validáveis por Swiss Re e Mapfre.
+        </p>
+        <div class="achievement-meta">
+          <div class="meta-tag">// SENTINEL-2</div>
+          <div class="meta-tag">// NDVI</div>
+          <div class="meta-tag">// CAR</div>
+          <div class="meta-tag">// SEGURO_AGRÍCOLA</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Backend / Frontend breakdown -->
+    <div class="proj-grid">
+      <div class="proj-block back">
+        <div class="proj-block-tag">// BACK-END</div>
+        <div class="proj-block-title">FastAPI · Python</div>
+        <ul class="proj-list">
+          <li>Copernicus Data Space (ESA) via sentinelhub SDK — imagens Sentinel-2 L2A</li>
+          <li>Shapefile CAR (~3 GB) com GeoPandas + Shapely via bounding box antes do intersect</li>
+          <li>Cálculo NDVI: mín / med / máx por semana com NumPy</li>
+          <li>Série histórica de 52 semanas para detecção de estresse hídrico</li>
+        </ul>
+      </div>
+
+      <div class="proj-block front">
+        <div class="proj-block-tag">// FRONT-END</div>
+        <div class="proj-block-title">React 19 · TypeScript</div>
+        <ul class="proj-list">
+          <li>Dashboard NDVI: <span style="color:var(--neon-green);">Saudável</span> / <span style="color:#ffe600;">Atenção</span> / <span style="color:var(--danger);">Emergência</span></li>
+          <li>Mapa interativo Leaflet para desenho do polígono da propriedade</li>
+          <li>Gráfico histórico semanal de NDVI dos últimos 12 meses (Recharts)</li>
+          <li>Laudo PDF para seguradoras (jsPDF) · Firebase Auth + Firestore</li>
+          <li>Multilíngue PT / ES / EN — Brasil, Paraguai, Bolívia</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Full stack tags -->
+    <div style="margin-top: 1.5rem;">
+      <div style="color: var(--neon-purple); font-size: 0.78rem; letter-spacing: 3px; margin-bottom: 0.8rem;">// STACK_COMPLETA</div>
+      <div class="achievement-meta" style="flex-wrap: wrap;">
+        <div class="meta-tag">Python</div>
+        <div class="meta-tag">FastAPI</div>
+        <div class="meta-tag">GeoPandas</div>
+        <div class="meta-tag">NumPy</div>
+        <div class="meta-tag">Copernicus SDK</div>
+        <div class="meta-tag">React 19</div>
+        <div class="meta-tag">TypeScript</div>
+        <div class="meta-tag">TanStack Router</div>
+        <div class="meta-tag">TanStack Query</div>
+        <div class="meta-tag">Leaflet</div>
+        <div class="meta-tag">Recharts</div>
+        <div class="meta-tag">Firebase</div>
+        <div class="meta-tag">jsPDF</div>
+        <div class="meta-tag">Tailwind v4</div>
+      </div>
+    </div>
+
+    <!-- Imagens do projeto — descomente e adicione os arquivos quando disponíveis
+    <div class="hackathon-gallery" style="grid-template-columns: 1fr 1fr; margin-top: 2rem;">
+      <div class="hack-photo" style="aspect-ratio: 16/9; background-color: #0a0a12;">
+        <span class="corner tl"></span><span class="corner tr"></span>
+        <span class="corner bl"></span><span class="corner br"></span>
+        <img src="safrasense-dashboard.png" alt="SafraSense — Dashboard NDVI">
+        <div class="hack-photo-label">DASHBOARD // NDVI_STATUS</div>
+      </div>
+      <div class="hack-photo" style="aspect-ratio: 16/9; background-color: #0a0a12;">
+        <span class="corner tl"></span><span class="corner tr"></span>
+        <span class="corner bl"></span><span class="corner br"></span>
+        <img src="safrasense-mapa.png" alt="SafraSense — Mapa interativo">
+        <div class="hack-photo-label">MAPA // PROPRIEDADE_RURAL</div>
+      </div>
+    </div>
+    -->
+  </div>
+
+  <!-- PRÓXIMOS PROJETOS: copie o bloco .achievement-card acima e adicione aqui -->
+
 </section>
 
 <!-- SKILLS -->
