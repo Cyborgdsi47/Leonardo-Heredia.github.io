@@ -873,13 +873,47 @@
     filter: none;
   }
 
+  /*
+   * ============================================================
+   *  GUIA DE IMPLEMENTAÇÃO DE IMAGENS NAS GALERIAS (.hack-photo)
+   * ============================================================
+   *
+   *  CASO 1 — FOTO COM EFEITOS HACKER (padrão, ex: prints de tela, mockups)
+   *    <div class="hack-photo" style="aspect-ratio: 4/3; background-color: #0a0a12;">
+   *      <img src="imagem.jpg" alt="...">
+   *      <div class="hack-photo-label">TÍTULO</div>
+   *    </div>
+   *    Resultado: overlay verde/roxo + scanlines + filtro saturate/contrast ativos.
+   *
+   *  CASO 2 — CERTIFICADO OU FOTO LIMPA (efeitos em volta, sem efeitos dentro da foto)
+   *    <div class="hack-photo hack-photo--clean" style="aspect-ratio: auto; background-color: #ffffff;">
+   *      <img src="certificado.png" alt="..." style="object-fit: contain; max-height: 520px; width: 100%; height: auto;">
+   *      <div class="hack-photo-label">TÍTULO</div>
+   *    </div>
+   *    MANTÉM em volta:  borda neon, glow, cantos animados, label, hover (borda muda de cor + sobe)
+   *    REMOVE de dentro: overlay gradiente neon, scanlines, filtro saturate/contrast na imagem
+   *    - background-color: #ffffff → para certificados/documentos brancos
+   *    - background-color: #0a0a12 → para fotos escuras (fundo de palco, etc.)
+   *    - max-height: ajuste para controlar o tamanho máximo
+   *
+   *  LARGURA DO WRAPPER DA GALERIA:
+   *    Certificados grandes → max-width: 860px
+   *    Fotos menores        → max-width: 650px
+   *    Grade 2 colunas      → grid-template-columns: 1fr 1fr
+   * ============================================================
+   */
+
+  /* Caso 2 — remove overlay e scanlines de cima da foto, mantém efeitos em volta */
   .hack-photo--clean::before,
   .hack-photo--clean::after {
-    display: none;
+    display: none; /* overlay neon e scanlines ficam fora */
   }
 
-  .hack-photo--clean img {
+  /* sem filtro na imagem, nem no hover */
+  .hack-photo--clean img,
+  .hack-photo--clean:hover img {
     filter: none !important;
+    transform: none !important; /* sem zoom no hover dentro da foto */
   }
 
   .hack-photo::before {
@@ -1433,11 +1467,11 @@
         </div>
       </div>
     </div>
-    <div class="hackathon-gallery" style="grid-template-columns: 1fr; max-width: 650px; margin: 2.5rem auto 0;">
-      <div class="hack-photo" style="aspect-ratio: 16/9; background-color: #ffffff;">
+    <div class="hackathon-gallery" style="grid-template-columns: 1fr; max-width: 860px; margin: 2.5rem auto 0;">
+      <div class="hack-photo hack-photo--clean" style="aspect-ratio: auto; background-color: #ffffff;">
         <span class="corner tl"></span><span class="corner tr"></span>
         <span class="corner bl"></span><span class="corner br"></span>
-        <img src="copernicus-certificate.png" alt="Certificado Hackathon 2026 CopernicusLAC Seguridad Alimentaria" style="object-fit: contain;">
+        <img src="copernicus-certificate.png" alt="Certificado Hackathon 2026 CopernicusLAC Seguridad Alimentaria" style="object-fit: contain; max-height: 520px; width: 100%; height: auto;">
         <div class="hack-photo-label">CERTIFICADO // PARTICIPAÇÃO & FINALISTA</div>
       </div>
     </div>
