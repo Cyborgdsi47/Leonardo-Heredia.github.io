@@ -674,7 +674,7 @@
   .achievement-card {
     position: relative;
     max-width: 900px;
-    margin: 0 auto;
+    margin: 0 auto 3rem;
     background: linear-gradient(135deg, rgba(0,255,65,0.05), rgba(189,0,255,0.05));
     border: 2px solid var(--neon-green);
     padding: 3rem 2.5rem;
@@ -683,6 +683,10 @@
       0 0 40px var(--neon-green-glow),
       inset 0 0 60px rgba(189, 0, 255, 0.08);
     transition: all 0.4s;
+  }
+
+  .achievement-card:last-child {
+    margin-bottom: 0;
   }
 
   .achievement-card::before {
@@ -1208,6 +1212,10 @@
         <div class="stat-label">Lugar Hackathon E+</div>
       </div>
       <div class="stat-card">
+        <span class="stat-number">5º</span>
+        <div class="stat-label">Lugar Hackathon Copernicus</div>
+      </div>
+      <div class="stat-card">
         <span class="stat-number">02</span>
         <div class="stat-label">Idiomas</div>
       </div>
@@ -1274,6 +1282,55 @@
   <div class="section-header">
     <div class="tag">// 03_ACHIEVEMENTS.LOG</div>
     <h2>CONQUISTAS</h2>
+  </div>
+
+  <div class="achievement-card">
+    <div class="achievement-grid">
+      <div class="trophy-container">
+        <div class="trophy-rays"></div>
+        <svg class="trophy-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="globeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#00fff7"/>
+              <stop offset="100%" stop-color="#bd00ff"/>
+            </linearGradient>
+          </defs>
+          <!-- Globe -->
+          <circle cx="50" cy="50" r="28" stroke="url(#globeGrad)" stroke-width="2.5" fill="none"/>
+          <!-- Grid lines -->
+          <ellipse cx="50" cy="50" rx="12" ry="28" stroke="url(#globeGrad)" stroke-width="1.5" fill="none"/>
+          <line x1="22" y1="50" x2="78" y2="50" stroke="url(#globeGrad)" stroke-width="1.5"/>
+          <path d="M 25 40 Q 50 48 75 40" stroke="url(#globeGrad)" stroke-width="1" fill="none"/>
+          <path d="M 25 60 Q 50 52 75 60" stroke="url(#globeGrad)" stroke-width="1" fill="none"/>
+          <!-- Orbit ring -->
+          <ellipse cx="50" cy="50" rx="42" ry="12" transform="rotate(-30 50 50)" stroke="url(#globeGrad)" stroke-width="2" stroke-dasharray="4 2" fill="none"/>
+          <!-- Satellite -->
+          <g transform="translate(80, 24) rotate(-30)">
+            <rect x="-4" y="-3" width="8" height="6" rx="1" fill="url(#globeGrad)"/>
+            <line x1="-10" y1="0" x2="10" y2="0" stroke="url(#globeGrad)" stroke-width="2"/>
+          </g>
+          <!-- Rank -->
+          <text x="50" y="55" text-anchor="middle" fill="url(#globeGrad)"
+                font-family="monospace" font-size="15" font-weight="bold">5º</text>
+        </svg>
+      </div>
+
+      <div class="achievement-info">
+        <div class="award-badge">// FINALISTA (5º LUGAR) · SAFRASENSE</div>
+        <h3>HACKATHON COPERNICUSLAC 2026</h3>
+        <div class="award-year">// COPERNICUSLAC · AGÊNCIA ESPACIAL EUROPEIA (ESA)</div>
+        <p>
+          Conquistei a posição de <span style="color: var(--neon-green); text-shadow: 0 0 8px var(--neon-green-glow);">Finalista (5º lugar geral)</span>
+          no Hackathon 2026 CopernicusLAC Seguridad Alimentaria. Integrando a equipe <span style="color: var(--neon-purple); text-shadow: 0 0 8px var(--neon-purple-glow);">SafraSense</span>,
+          desenvolvemos soluções focadas em segurança alimentar utilizando dados de Observação da Terra e produtos Copernicus para propor abordagens inovadoras a desafios agrícolas da região.
+        </p>
+        <div class="achievement-meta">
+          <div class="meta-tag">// SAFRASENSE</div>
+          <div class="meta-tag">// OBSERVAÇÃO_TERRA</div>
+          <div class="meta-tag">// SEGURANÇA_ALIMENTAR</div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="achievement-card">
