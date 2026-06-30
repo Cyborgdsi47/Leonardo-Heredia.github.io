@@ -1119,23 +1119,26 @@
 
   /* ===== LIGHTBOX MODAL ===== */
   .lightbox-modal {
-    display: none;
+    display: flex;
+    visibility: hidden;
+    pointer-events: none;
     position: fixed;
     z-index: 10100;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(5, 5, 5, 0.95);
+    background-color: rgba(0, 0, 0, 1);
     backdrop-filter: blur(8px);
     justify-content: center;
     align-items: center;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
   }
 
   .lightbox-modal.active {
-    display: flex;
+    visibility: visible;
+    pointer-events: all;
     opacity: 1;
   }
 
