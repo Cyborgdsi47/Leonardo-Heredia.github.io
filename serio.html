@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leonardo Heredia | Portfólio Profissional</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f6f8fb;
+    --surface: #ffffff;
+    --surface-alt: #eef3f8;
+    --ink: #172033;
+    --muted: #5e6b7f;
+    --line: #d9e1ea;
+    --primary: #1f4f6f;
+    --primary-dark: #173a52;
+    --accent: #2f7d6d;
+    --gold: #b7791f;
+    --shadow: 0 18px 45px rgba(23, 32, 51, 0.08);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: Inter, Arial, sans-serif;
+    line-height: 1.6;
+  }
+  a { color: inherit; }
+  img { display: block; max-width: 100%; }
+
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.94);
+    border-bottom: 1px solid var(--line);
+    backdrop-filter: blur(14px);
+  }
+  .nav {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .brand {
+    font-weight: 800;
+    color: var(--primary-dark);
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    list-style: none;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--muted);
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  .nav-links a {
+    text-decoration: none;
+  }
+  .nav-links a:hover { color: var(--primary); }
+  .nav-links .outline {
+    border: 1px solid var(--line);
+    color: var(--primary);
+    border-radius: 6px;
+    padding: 8px 10px;
+    background: #fff;
+  }
+
+  main {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 48px 24px 72px;
+  }
+
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(280px, 0.75fr);
+    gap: 32px;
+    align-items: stretch;
+    margin-bottom: 44px;
+  }
+  .hero-main,
+  .contact-card,
+  .section,
+  .item-card,
+  .achievement,
+  .skill-group {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+  }
+  .hero-main {
+    padding: 42px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .eyebrow {
+    color: var(--accent);
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-size: clamp(2.2rem, 5vw, 4.2rem);
+    line-height: 1.03;
+    letter-spacing: 0;
+    color: var(--primary-dark);
+    margin-bottom: 18px;
+  }
+  .subtitle {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: var(--muted);
+    max-width: 720px;
+    margin-bottom: 24px;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0 16px;
+    border-radius: 6px;
+    font-weight: 700;
+    text-decoration: none;
+    border: 1px solid var(--primary);
+    background: var(--primary);
+    color: #fff;
+  }
+  .button.secondary {
+    background: #fff;
+    color: var(--primary);
+  }
+  .contact-card {
+    padding: 28px;
+  }
+  .contact-card h2 {
+    font-size: 1.05rem;
+    color: var(--primary-dark);
+    margin-bottom: 16px;
+  }
+  .contact-list {
+    display: grid;
+    gap: 12px;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+  .contact-list strong {
+    display: block;
+    color: var(--ink);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .summary-strip {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin-bottom: 44px;
+  }
+  .metric {
+    background: var(--primary-dark);
+    color: #fff;
+    border-radius: 8px;
+    padding: 18px;
+    min-height: 112px;
+  }
+  .metric strong {
+    display: block;
+    font-size: 1.7rem;
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+  .metric span {
+    display: block;
+    color: #d7e4ed;
+    font-size: 0.85rem;
+  }
+
+  .section {
+    padding: 34px;
+    margin-bottom: 24px;
+  }
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 14px;
+    margin-bottom: 24px;
+  }
+  .section h2 {
+    color: var(--primary-dark);
+    font-size: 1.45rem;
+    letter-spacing: 0;
+  }
+  .section-kicker {
+    color: var(--accent);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .lead {
+    color: var(--muted);
+    max-width: 880px;
+    font-size: 1rem;
+  }
+  .lead p + p { margin-top: 12px; }
+
+  .timeline {
+    display: grid;
+    gap: 18px;
+  }
+  .job {
+    border-left: 4px solid var(--primary);
+    padding: 2px 0 2px 20px;
+  }
+  .job-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 6px;
+    flex-wrap: wrap;
+  }
+  .job h3 {
+    font-size: 1.1rem;
+    color: var(--ink);
+  }
+  .period {
+    color: var(--accent);
+    font-weight: 800;
+    font-size: 0.9rem;
+  }
+  .role {
+    color: var(--primary);
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .job ul,
+  .achievement ul {
+    padding-left: 20px;
+    color: var(--muted);
+  }
+  .job li + li,
+  .achievement li + li { margin-top: 8px; }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+  }
+  .item-card,
+  .achievement,
+  .skill-group {
+    box-shadow: none;
+    padding: 22px;
+  }
+  .item-card h3,
+  .achievement h3,
+  .skill-group h3 {
+    color: var(--primary-dark);
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+  .meta {
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+  }
+  .item-card p,
+  .achievement p {
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+  .achievement {
+    display: grid;
+    gap: 18px;
+  }
+  .achievement-label {
+    display: inline-flex;
+    width: fit-content;
+    border-radius: 999px;
+    background: #edf6f4;
+    color: var(--accent);
+    padding: 6px 10px;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+  .gallery.single { grid-template-columns: 1fr; }
+  .gallery figure {
+    background: var(--surface-alt);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .gallery img {
+    width: 100%;
+    height: 320px;
+    object-fit: contain;
+    background: #fff;
+  }
+  .gallery figcaption {
+    padding: 10px 12px;
+    color: var(--muted);
+    font-size: 0.84rem;
+    font-weight: 600;
+  }
+
+  .skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    list-style: none;
+  }
+  .skill-list li,
+  .language-tag {
+    border: 1px solid var(--line);
+    background: var(--surface-alt);
+    color: var(--primary-dark);
+    border-radius: 999px;
+    padding: 8px 11px;
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
+  .languages {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 18px;
+  }
+
+  footer {
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    text-align: center;
+    padding: 30px 24px;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 860px) {
+    .nav {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+    .nav-links { justify-content: flex-start; }
+    .hero,
+    .grid-2,
+    .grid-3,
+    .summary-strip {
+      grid-template-columns: 1fr;
+    }
+    .hero-main,
+    .section,
+    .contact-card {
+      padding: 26px;
+    }
+    .gallery { grid-template-columns: 1fr; }
+    .gallery img { height: auto; max-height: 380px; }
+  }
+
+  @media print {
+    .topbar, .hero-actions, .gallery { display: none; }
+    body { background: #fff; }
+    main { padding: 0; }
+    .hero-main, .contact-card, .section, .item-card, .achievement, .skill-group {
+      box-shadow: none;
+      border-color: #bbb;
+    }
+  }
+</style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav" aria-label="Navegação principal">
+      <a class="brand" href="#inicio">Leonardo Heredia</a>
+      <ul class="nav-links">
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#experiencia">Experiência</a></li>
+        <li><a href="#conquistas">Conquistas</a></li>
+        <li><a href="#habilidades">Habilidades</a></li>
+        <li><a href="#formacao">Formação</a></li>
+        <li><a href="#contato">Contato</a></li>
+        <li><a class="outline" href="index.html">Versão criativa</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="inicio">
+    <section class="hero" aria-labelledby="titulo">
+      <div class="hero-main">
+        <div class="eyebrow">Finanças corporativas e ciência de dados</div>
+        <h1 id="titulo">Leonardo Antônio de Paiva Heredia</h1>
+        <p class="subtitle">
+          Profissional analítico com experiência em pagamentos, compliance, fluxo de caixa,
+          atendimento consultivo e análise de dados com SQL. Em formação em Ciência de Dados
+          pela UNIVESP, com interesse em finanças, tecnologia e melhoria de processos.
+        </p>
+        <div class="hero-actions">
+          <a class="button" href="#experiencia">Ver experiência</a>
+          <a class="button secondary" href="mailto:leoantonioheredia@outlook.com">Enviar e-mail</a>
+        </div>
+      </div>
+
+      <aside class="contact-card" id="contato" aria-labelledby="contato-titulo">
+        <h2 id="contato-titulo">Contato</h2>
+        <div class="contact-list">
+          <div><strong>Status</strong>Disponível para oportunidades</div>
+          <div><strong>E-mail</strong><a href="mailto:leoantonioheredia@outlook.com">leoantonioheredia@outlook.com</a></div>
+          <div><strong>Telefone</strong><a href="tel:+5511942694727">(11) 94269-4727</a></div>
+          <div><strong>Localização</strong>São Paulo, BR</div>
+          <div><strong>Idiomas</strong>Português nativo, inglês intermediário e espanhol intermediário</div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="summary-strip" aria-label="Resumo profissional">
+      <div class="metric"><strong>2+</strong><span>Anos de experiência em finanças</span></div>
+      <div class="metric"><strong>5</strong><span>Empresas do grupo geridas em pagamentos</span></div>
+      <div class="metric"><strong>8º</strong><span>Semestre em Ciência de Dados</span></div>
+      <div class="metric"><strong>2º</strong><span>Lugar no Hackathon E+ 2026</span></div>
+      <div class="metric"><strong>5º</strong><span>Lugar no Hackathon CopernicusLAC 2026</span></div>
+    </section>
+
+    <section class="section" id="sobre">
+      <div class="section-header">
+        <h2>Sobre</h2>
+        <div class="section-kicker">Perfil</div>
+      </div>
+      <div class="lead">
+        <p>
+          Profissional com experiência sólida em contas a pagar, análise financeira e gestão
+          de fluxo de caixa, atuando em processos de pagamentos corporativos, compliance e
+          relatórios financeiros.
+        </p>
+        <p>
+          Possui conhecimento em notas fiscais, enquadramento tributário, classificação contábil
+          e SQL para apoio em análise de dados. Perfil organizado, comunicativo e orientado a
+          resultados, com foco em desenvolver carreira em Finanças e Ciência de Dados.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" id="experiencia">
+      <div class="section-header">
+        <h2>Experiência</h2>
+        <div class="section-kicker">Trajetória</div>
+      </div>
+      <div class="timeline">
+        <article class="job">
+          <div class="job-top">
+            <h3>Atento Brasil S/A</h3>
+            <div class="period">05/2026 - atual</div>
+          </div>
+          <div class="role">Especialista Relacionamento Cliente I - Conta Lenovo</div>
+          <ul>
+            <li>Atendimento e diagnóstico técnico avançado de hardware e software para notebooks Lenovo.</li>
+            <li>Gestão da experiência do usuário, incluindo entendimento de dores, gerenciamento de crises e retenção de clientes.</li>
+            <li>Aplicação de metodologias de troubleshooting para identificar causa raiz e direcionar soluções assertivas.</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <div class="job-top">
+            <h3>Teleperformance CRM S.A.</h3>
+            <div class="period">09/2025 - 11/2025</div>
+          </div>
+          <div class="role">Expert em Interação II - Plataforma 99</div>
+          <ul>
+            <li>Atendimento consultivo B2B para resolução de problemas complexos de parceiros da plataforma 99.</li>
+            <li>Suporte técnico e operacional no cadastramento e validação de empresas no aplicativo.</li>
+            <li>Identificação de gargalos no fluxo de cadastro e melhoria da experiência do cliente.</li>
+            <li>Atuação em gestão de conflitos, entendimento da dor do cliente e entrega de soluções ágeis.</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <div class="job-top">
+            <h3>OdontoPrev S.A.</h3>
+            <div class="period">09/2022 - 09/2024</div>
+          </div>
+          <div class="role">Assistente Financeiro II / Jovem Aprendiz</div>
+          <ul>
+            <li>Gestão de pagamentos corporativos de cinco empresas do grupo, com controle de prazos, conformidade fiscal e segurança nas transações.</li>
+            <li>Análise e conferência de notas fiscais, boletos e impostos, com enquadramento tributário e registro contábil.</li>
+            <li>Organização e classificação de despesas para fluxo de caixa e relatórios de controle financeiro.</li>
+            <li>Apoio em rotinas de compliance, auditoria interna e relatórios financeiros.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="conquistas">
+      <div class="section-header">
+        <h2>Conquistas</h2>
+        <div class="section-kicker">Reconhecimento</div>
+      </div>
+      <div class="grid-2">
+        <article class="achievement">
+          <span class="achievement-label">Finalista - 5º lugar geral</span>
+          <div>
+            <h3>Hackathon CopernicusLAC 2026</h3>
+            <div class="meta">CopernicusLAC - Agência Espacial Europeia (ESA) - Equipe SafraSense</div>
+            <p>
+              Desenvolvimento de soluções voltadas à segurança alimentar utilizando dados de Observação da Terra e produtos Copernicus,
+              propondo abordagens inovadoras para desafios agrícolas da região.
+            </p>
+          </div>
+          <div class="gallery single">
+            <figure>
+              <img src="copernicus-certificate.png" alt="Certificado Hackathon 2026 CopernicusLAC Seguridad Alimentaria">
+              <figcaption>Certificado de participação e finalista</figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <article class="achievement">
+          <span class="achievement-label">2º lugar</span>
+          <div>
+            <h3>Hackathon E+ 2026</h3>
+            <div class="meta">Instituto E+ Transição Energética - Equipe 435</div>
+            <p>
+              Desenvolvimento de soluções inovadoras voltadas à transição energética, com aplicação prática de análise de dados,
+              trabalho em equipe sob pressão e resolução de problemas em tempo limitado.
+            </p>
+          </div>
+          <div class="gallery">
+            <figure>
+              <img src="hackathon-medal.jpg" alt="Premiação 2º Lugar - Equipe 435 - Hackathon E+ 2026">
+              <figcaption>Premiação de 2º lugar</figcaption>
+            </figure>
+            <figure>
+              <img src="hackathon-team.jpg" alt="Equipe 435 trabalhando no Hackathon E+ 2026">
+              <figcaption>Equipe 435 em atividade</figcaption>
+            </figure>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="habilidades">
+      <div class="section-header">
+        <h2>Habilidades</h2>
+        <div class="section-kicker">Competências</div>
+      </div>
+      <div class="grid-3">
+        <div class="skill-group">
+          <h3>Dados e código</h3>
+          <ul class="skill-list">
+            <li>SQL - intermediário</li>
+            <li>Python - básico</li>
+            <li>C++ - básico</li>
+            <li>JavaScript - básico</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Pacote Office</h3>
+          <ul class="skill-list">
+            <li>Word - avançado</li>
+            <li>Excel - intermediário</li>
+            <li>PowerPoint - avançado</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Design e mídia</h3>
+          <ul class="skill-list">
+            <li>Photoshop - intermediário</li>
+            <li>Edição de vídeo - intermediário</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="formacao">
+      <div class="section-header">
+        <h2>Formação</h2>
+        <div class="section-kicker">Educação</div>
+      </div>
+      <div class="grid-2">
+        <article class="item-card">
+          <h3>Ciência de Dados</h3>
+          <div class="meta">UNIVESP - Universidade Virtual do Estado de São Paulo</div>
+          <p>2021 - 2026. 8º semestre em andamento. Foco em SQL, Python, C++ e análise de dados aplicados à área financeira.</p>
+        </article>
+        <article class="item-card">
+          <h3>Ensino Médio</h3>
+          <div class="meta">Completo</div>
+          <p>Concluído em dezembro de 2019.</p>
+        </article>
+        <article class="item-card">
+          <h3>Liderança</h3>
+          <div class="meta">Fundação Estudar</div>
+          <p>Certificação com desenvolvimento de competências de liderança e gestão.</p>
+        </article>
+        <article class="item-card">
+          <h3>Auxiliar Administrativo</h3>
+          <div class="meta">Curso Jovem Aprendiz</div>
+          <p>Certificação em rotinas administrativas corporativas.</p>
+        </article>
+      </div>
+      <div class="languages" aria-label="Idiomas">
+        <span class="language-tag">Português - nativo</span>
+        <span class="language-tag">Inglês - intermediário</span>
+        <span class="language-tag">Espanhol - intermediário</span>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Leonardo Heredia - Portfólio profissional 2026. Versão criativa disponível em <a href="index.html">index.html</a>.
+  </footer>
+</body>
+</html>
