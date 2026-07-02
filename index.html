@@ -440,19 +440,60 @@
     background: var(--surface-alt);
     border: 1px solid var(--line);
     border-radius: 8px;
-    overflow: hidden;
+    overflow: visible;
   }
   .project-images img {
     width: 100%;
     height: 240px;
     object-fit: cover;
     background: #fff;
+    border-radius: 8px 8px 0 0;
+    display: block;
   }
   .project-images figcaption {
     padding: 8px 12px;
     color: var(--muted);
     font-size: 0.82rem;
     font-weight: 600;
+  }
+  .img-gallery-section { margin-bottom: 28px; }
+  .img-gallery-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--primary);
+    border-left: 3px solid var(--primary);
+    padding-left: 10px;
+    margin-bottom: 12px;
+    margin-top: 20px;
+  }
+  details.img-detail { border-top: 1px solid var(--line); }
+  details.img-detail summary {
+    padding: 7px 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--primary);
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    user-select: none;
+  }
+  details.img-detail summary::-webkit-details-marker { display: none; }
+  details.img-detail summary::before {
+    content: '▶';
+    font-size: 0.6rem;
+    transition: transform 0.2s;
+    display: inline-block;
+  }
+  details.img-detail[open] summary::before { transform: rotate(90deg); }
+  details.img-detail p {
+    padding: 0 12px 12px;
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.55;
   }
   .project-badge.green {
     background: #d1fae5;
@@ -748,17 +789,72 @@
           necessidade de campo ou contratação externa.
         </p>
 
-        <div class="project-images">
-          <figure>
-            <img src="images/tupa-analista.png" alt="TUPÃ — Painel do Analista">
-            <figcaption>Painel do Analista com CAR processado</figcaption>
-          </figure>
-          <!-- Portal do Agricultor — adicionar quando disponível
-          <figure>
-            <img src="images/tupa-portal.png" alt="TUPÃ — Portal do Agricultor">
-            <figcaption>Portal do Agricultor com notificações</figcaption>
-          </figure>
-          -->
+        <div class="img-gallery-section">
+          <div class="img-gallery-label">Painel do Analista · SFB</div>
+          <div class="project-images">
+            <figure>
+              <img src="images/tupa-analista.png" alt="TUPÃ — Painel completo do analista">
+              <figcaption>Visão geral — mapa satélite + painel lateral</figcaption>
+              <details class="img-detail">
+                <summary>Ver explicação</summary>
+                <p>Interface principal do analista do SFB. O mapa satélite exibe o CAR com limite demarcado em amarelo. O painel lateral mostra o volume gerado automaticamente: 8 feições, 73,9 ha de APP e 584,6 ha de Reserva Legal, com 100% de confiança na classificação via imagens Sentinel-2 (Copernicus).</p>
+              </details>
+            </figure>
+            <figure>
+              <img src="images/tupa-analista-2.png" alt="TUPÃ — Painel lateral de controle">
+              <figcaption>Confiança do motor e camadas da base</figcaption>
+              <details class="img-detail">
+                <summary>Ver explicação</summary>
+                <p>Detalhe do painel de controle: confiança do motor 100% Alta, toggles para ativar/desativar camadas (APP curso d'água, APP nascente, Reserva Legal) e exportação em GeoJSON. O diagnóstico automático identificou 18 divergências — incluindo cultivo agrícola dentro da faixa de 30 m de APP.</p>
+              </details>
+            </figure>
+            <figure>
+              <img src="images/tupa-analista-3.png" alt="TUPÃ — Diagnóstico e notificação">
+              <figcaption>Diagnóstico expandido + envio de notificação</figcaption>
+              <details class="img-detail">
+                <summary>Ver explicação</summary>
+                <p>O diagnóstico detalha cada irregularidade: "Cultivo Agrícola em APP" em faixa de 30 m, com 0,1 ha de área irregular. Com um clique em "Enviar notificação", o analista despacha um alerta automático para o portal do agricultor — que recebe as pendências em linguagem acessível, sem laudo técnico.</p>
+              </details>
+            </figure>
+          </div>
+        </div>
+
+        <div class="img-gallery-section">
+          <div class="img-gallery-label">Portal do Agricultor · Público</div>
+          <div class="project-images">
+            <figure>
+              <img src="images/tupa-portal-1.png" alt="TUPÃ — Tela inicial do agricultor">
+              <figcaption>Tela inicial — busca por número do CAR</figcaption>
+              <details class="img-detail">
+                <summary>Ver explicação</summary>
+                <p>Interface pública para o produtor rural. Qualquer agricultor consulta a situação ambiental da propriedade digitando o número do CAR (Cadastro Ambiental Rural). Login integrado com gov.br para acesso a dados sensíveis e solicitação de correções — sem intermediários técnicos.</p>
+              </details>
+            </figure>
+            <figure>
+              <img src="images/tupa-portal-2.png" alt="TUPÃ — Notificações de pendências">
+              <figcaption>Notificações de pendências ambientais</figcaption>
+              <details class="img-detail">
+                <summary>Ver explicação</summary>
+                <p>Após a análise, o agricultor recebe alertas em linguagem simples: "Supressão de vegetação nativa dentro da faixa de APP" e "Reserva Legal abaixo do mínimo do Código Florestal (20%)." O sistema elimina laudos técnicos complexos — o produtor entende sua situação sem precisar de agrônomo.</p>
+              </details>
+            </figure>
+            <figure>
+              <img src="images/tupa-portal-3.png" alt="TUPÃ — Mapa e dados do imóvel">
+              <figcaption>Mapa satélite e resumo do imóvel</figcaption>
+              <details class="img-detail">
+                <summary>Ver explicação</summary>
+                <p>O portal exibe o mapa satélite com as camadas ambientais e resume os dados em cards: município, APP (73,9 ha ao longo de rios e nascentes) e Reserva Legal (584,6 ha). Visualização colorida por tipo de feição para o agricultor entender rapidamente o que deve preservar.</p>
+              </details>
+            </figure>
+            <figure>
+              <img src="images/tupa-portal-4.png" alt="TUPÃ — Formulário de correção">
+              <figcaption>Solicitação de correção pelo agricultor</figcaption>
+              <details class="img-detail">
+                <summary>Ver explicação</summary>
+                <p>Se o agricultor identificar divergências — um rio que secou, uma encosta que não existe — solicita correção diretamente pelo portal. O pedido é encaminhado ao analista para reavaliação. Esse canal de comunicação bidirecional foi um dos diferenciais do TUPÃ no haCARthon ENAP/Dataprev/SFB.</p>
+              </details>
+            </figure>
+          </div>
         </div>
 
         <div class="grid-2">

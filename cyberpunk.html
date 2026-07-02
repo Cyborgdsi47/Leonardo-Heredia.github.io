@@ -1304,6 +1304,39 @@
     .proj-grid { grid-template-columns: 1fr; }
   }
 
+  /* ===== IMG DETAIL CYBER ===== */
+  details.img-detail-cyber { border-top: 1px solid rgba(0,255,65,0.2); margin-top: 0.6rem; }
+  details.img-detail-cyber summary {
+    padding: 6px 0;
+    font-size: 0.72rem;
+    font-family: 'Share Tech Mono', monospace;
+    letter-spacing: 2px;
+    color: var(--neon-green);
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-transform: uppercase;
+    user-select: none;
+  }
+  details.img-detail-cyber summary::-webkit-details-marker { display: none; }
+  details.img-detail-cyber summary::before {
+    content: '>';
+    font-size: 0.75rem;
+    display: inline-block;
+    transition: transform 0.2s;
+    color: var(--neon-green);
+  }
+  details.img-detail-cyber[open] summary::before { transform: rotate(90deg); }
+  details.img-detail-cyber p {
+    padding: 8px 0 4px;
+    font-size: 0.78rem;
+    color: rgba(0,255,65,0.65);
+    line-height: 1.55;
+    font-family: 'Share Tech Mono', monospace;
+  }
+
   /* ===== SELECTION ===== */
   ::selection {
     background: var(--neon-green);
@@ -1806,24 +1839,69 @@
       </div>
     </div>
 
-    <div class="hackathon-gallery" style="grid-template-columns: 1fr; max-width: 860px; margin: 2rem auto 0;">
-      <div class="hack-photo" style="aspect-ratio: 16/9; background-color: #0a0a12;">
-        <span class="corner tl"></span><span class="corner tr"></span>
-        <span class="corner bl"></span><span class="corner br"></span>
-        <img src="images/tupa-analista.png" alt="TUPÃ — Painel do Analista">
-        <div class="hack-photo-label">PAINEL // ANALISTA</div>
+    <div style="margin-top: 2rem;">
+      <div style="color: var(--neon-purple); font-size: 0.72rem; letter-spacing: 3px; margin-bottom: 0.8rem;">// PAINEL_ANALISTA · SFB</div>
+      <div class="hackathon-gallery" style="grid-template-columns: 1fr 1fr; gap: 1rem;">
+        <div class="hack-photo" style="aspect-ratio: 16/9; background-color: #0a0a12;">
+          <span class="corner tl"></span><span class="corner tr"></span>
+          <span class="corner bl"></span><span class="corner br"></span>
+          <img src="images/tupa-analista.png" alt="TUPÃ — Painel completo">
+          <div class="hack-photo-label">MAPA + PAINEL</div>
+        </div>
+        <div class="hack-photo" style="aspect-ratio: 16/9; background-color: #0a0a12;">
+          <span class="corner tl"></span><span class="corner tr"></span>
+          <span class="corner bl"></span><span class="corner br"></span>
+          <img src="images/tupa-analista-2.png" alt="TUPÃ — Confiança e camadas" style="object-fit: contain;">
+          <div class="hack-photo-label">CONFIANÇA + CAMADAS</div>
+        </div>
       </div>
-    </div>
-    <!-- Portal do Agricultor — adicionar quando disponível
-    <div class="hackathon-gallery" style="grid-template-columns: 1fr; max-width: 860px; margin: 1rem auto 0;">
-      <div class="hack-photo" style="aspect-ratio: 16/9; background-color: #0a0a12;">
-        <span class="corner tl"></span><span class="corner tr"></span>
-        <span class="corner bl"></span><span class="corner br"></span>
-        <img src="images/tupa-portal.png" alt="TUPÃ — Portal do Agricultor">
-        <div class="hack-photo-label">PORTAL // AGRICULTOR</div>
+      <div class="hackathon-gallery" style="grid-template-columns: 1fr; max-width: 420px; margin-top: 1rem;">
+        <div class="hack-photo" style="aspect-ratio: 16/9; background-color: #0a0a12;">
+          <span class="corner tl"></span><span class="corner tr"></span>
+          <span class="corner bl"></span><span class="corner br"></span>
+          <img src="images/tupa-analista-3.png" alt="TUPÃ — Diagnóstico e notificação" style="object-fit: contain;">
+          <div class="hack-photo-label">DIAGNÓSTICO + NOTIF.</div>
+        </div>
       </div>
+      <details class="img-detail-cyber">
+        <summary>// VER_EXPLICACAO_ANALISTA</summary>
+        <p>Painel do analista ambiental do SFB. Mapa satélite com CAR delimitado em amarelo. Motor de análise com 100% de confiança via Sentinel-2 — gera automaticamente APP curso d'água, APP nascente e Reserva Legal. Diagnóstico identificou 18 divergências incluindo cultivo agrícola em faixa de APP. Botão "Enviar notificação" despacha alerta para o portal do agricultor com um clique.</p>
+      </details>
     </div>
-    -->
+
+    <div style="margin-top: 2rem;">
+      <div style="color: var(--neon-purple); font-size: 0.72rem; letter-spacing: 3px; margin-bottom: 0.8rem;">// PORTAL_AGRICULTOR · PÚBLICO</div>
+      <div class="hackathon-gallery" style="grid-template-columns: 1fr 1fr; gap: 1rem;">
+        <div class="hack-photo" style="aspect-ratio: 16/9; background-color: #0a0a12;">
+          <span class="corner tl"></span><span class="corner tr"></span>
+          <span class="corner bl"></span><span class="corner br"></span>
+          <img src="images/tupa-portal-1.png" alt="TUPÃ — Tela inicial">
+          <div class="hack-photo-label">TELA INICIAL</div>
+        </div>
+        <div class="hack-photo" style="aspect-ratio: 16/9; background-color: #0a0a12;">
+          <span class="corner tl"></span><span class="corner tr"></span>
+          <span class="corner bl"></span><span class="corner br"></span>
+          <img src="images/tupa-portal-2.png" alt="TUPÃ — Pendências">
+          <div class="hack-photo-label">NOTIF. PENDÊNCIAS</div>
+        </div>
+        <div class="hack-photo" style="aspect-ratio: 16/9; background-color: #0a0a12;">
+          <span class="corner tl"></span><span class="corner tr"></span>
+          <span class="corner bl"></span><span class="corner br"></span>
+          <img src="images/tupa-portal-3.png" alt="TUPÃ — Mapa do imóvel">
+          <div class="hack-photo-label">MAPA DO IMÓVEL</div>
+        </div>
+        <div class="hack-photo" style="aspect-ratio: 16/9; background-color: #0a0a12;">
+          <span class="corner tl"></span><span class="corner tr"></span>
+          <span class="corner bl"></span><span class="corner br"></span>
+          <img src="images/tupa-portal-4.png" alt="TUPÃ — Solicitar correção">
+          <div class="hack-photo-label">SOLICITAR CORREÇÃO</div>
+        </div>
+      </div>
+      <details class="img-detail-cyber">
+        <summary>// VER_EXPLICACAO_PORTAL</summary>
+        <p>Portal público para o agricultor consultar a situação ambiental da propriedade via número do CAR. Login integrado com gov.br. Após análise, o produtor recebe alertas em linguagem simples: APP irregular, Reserva Legal abaixo do mínimo do Código Florestal. Pode solicitar correção diretamente pelo portal — eliminando laudos técnicos e intermediários.</p>
+      </details>
+    </div>
 
     <div style="margin-top: 1.5rem;">
       <div style="color: var(--neon-purple); font-size: 0.78rem; letter-spacing: 3px; margin-bottom: 0.8rem;">// STACK_COMPLETA</div>
