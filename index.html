@@ -457,6 +457,17 @@
     font-weight: 600;
   }
   .img-gallery-section { margin-bottom: 28px; }
+  .img-hint {
+    font-size: 0.77rem;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 16px;
+    opacity: 0.8;
+  }
+  .img-hint::before { content: '⊕'; color: var(--primary); font-size: 0.9rem; }
+  .project-images img[data-gallery] { cursor: zoom-in; }
   .img-gallery-label {
     font-size: 0.72rem;
     font-weight: 700;
@@ -898,6 +909,8 @@
           espacial em PostGIS, entregando diagnósticos automáticos de conformidade ambiental em minutos — sem
           necessidade de campo ou contratação externa.
         </p>
+
+        <p class="img-hint">Clique nas imagens para ampliar e ver detalhes</p>
 
         <div class="img-gallery-section">
           <div class="img-gallery-label">Painel do Analista · SFB</div>

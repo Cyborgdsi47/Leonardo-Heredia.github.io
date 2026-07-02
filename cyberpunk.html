@@ -1332,6 +1332,19 @@
   }
 
   /* ===== IMG DETAIL CYBER ===== */
+  .gallery-hint {
+    font-size: 0.68rem;
+    font-family: 'Share Tech Mono', monospace;
+    letter-spacing: 2px;
+    color: rgba(0,255,65,0.45);
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .gallery-hint::before { content: '[ i ]'; color: rgba(0,255,65,0.6); }
+  .hack-photo img[data-gallery] { cursor: zoom-in; }
+
   details.img-detail-cyber { border-top: 1px solid rgba(0,255,65,0.2); margin-top: 0.6rem; }
   details.img-detail-cyber summary {
     padding: 6px 0;
@@ -1654,6 +1667,7 @@
       </div>
     </div>
 
+    <p class="gallery-hint">clique nas imagens para ampliar e ver detalhes</p>
     <div class="hackathon-gallery" style="grid-template-columns: 1fr; gap: 1.2rem;">
       <div class="hack-photo hack-photo--clean" style="aspect-ratio: auto; background-color: #ffffff;">
         <span class="corner tl"></span><span class="corner tr"></span>
@@ -1876,6 +1890,7 @@
     </div>
 
     <div style="margin-top: 2rem;">
+      <p class="gallery-hint">clique nas imagens para ampliar e ver detalhes</p>
       <div style="color: var(--neon-purple); font-size: 0.72rem; letter-spacing: 3px; margin-bottom: 0.8rem;">// PAINEL_ANALISTA · SFB</div>
       <div class="hackathon-gallery" style="grid-template-columns: 1fr 1fr; gap: 1rem;">
         <div class="hack-photo" style="aspect-ratio: 16/9; background-color: #0a0a12;">
