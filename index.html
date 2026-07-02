@@ -510,6 +510,116 @@
     margin-top: 18px;
   }
 
+  /* ===== LIGHTBOX ===== */
+  .lb-modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    inset: 0;
+    background: rgba(10,20,35,0.9);
+    z-index: 1000;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.22s, visibility 0.22s;
+    padding-top: 48px;
+    backdrop-filter: blur(6px);
+  }
+  .lb-modal.active { visibility: visible; opacity: 1; }
+  .lb-wrap {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: min(1060px, 92vw);
+    max-height: 90vh;
+    background: var(--surface);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 32px 80px rgba(0,0,0,0.45);
+    overflow-y: auto;
+    scrollbar-width: none;
+  }
+  .lb-wrap::-webkit-scrollbar { display: none; }
+  .lb-img-row {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e8edf3;
+    width: 100%;
+  }
+  .lb-img-row img {
+    max-width: 100%;
+    max-height: 58vh;
+    object-fit: contain;
+    display: block;
+  }
+  .lb-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.9);
+    border: 1px solid var(--line);
+    color: var(--primary);
+    font-size: 1.3rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    transition: background 0.15s, color 0.15s;
+  }
+  .lb-nav:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+  .lb-prev { left: 10px; }
+  .lb-next { right: 10px; }
+  .lb-close {
+    position: absolute;
+    top: 10px; right: 12px;
+    background: rgba(255,255,255,0.85);
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    width: 30px; height: 30px;
+    font-size: 1.15rem;
+    color: var(--muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    line-height: 1;
+    transition: color 0.15s, background 0.15s;
+  }
+  .lb-close:hover { color: var(--primary); background: #fff; }
+  .lb-dots {
+    display: flex;
+    gap: 6px;
+    padding: 10px 0 0;
+  }
+  .lb-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--line);
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .lb-dot.active { background: var(--primary); transform: scale(1.3); }
+  .lb-info {
+    width: 100%;
+    padding: 14px 22px 18px;
+    border-top: 1px solid var(--line);
+    margin-top: 8px;
+  }
+  .lb-caption { font-size: 0.88rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 5px; }
+  .lb-explain { font-size: 0.83rem; color: var(--muted); line-height: 1.6; }
+  @media (max-width: 600px) {
+    .lb-nav { width: 32px; height: 32px; font-size: 1rem; }
+    .lb-img-row img { max-height: 42vh; }
+    .lb-info { padding: 10px 14px 14px; }
+  }
+
   @media print {
     .topbar, .hero-actions, .gallery { display: none; }
     body { background: #fff; }
@@ -793,7 +903,10 @@
           <div class="img-gallery-label">Painel do Analista · SFB</div>
           <div class="project-images">
             <figure>
-              <img src="images/tupa-analista.png" alt="TUPÃ — Painel completo do analista">
+              <img src="images/tupa-analista.png" alt="TUPÃ — Painel completo do analista"
+                   data-gallery="tupa-analista"
+                   data-caption="Visão geral — mapa satélite + painel lateral"
+                   data-explain="Interface principal do analista do SFB. O mapa satélite exibe o CAR com limite demarcado em amarelo. O painel lateral mostra o volume gerado automaticamente: 8 feições, 73,9 ha de APP e 584,6 ha de Reserva Legal, com 100% de confiança via Sentinel-2 (Copernicus).">
               <figcaption>Visão geral — mapa satélite + painel lateral</figcaption>
               <details class="img-detail">
                 <summary>Ver explicação</summary>
@@ -801,7 +914,10 @@
               </details>
             </figure>
             <figure>
-              <img src="images/tupa-analista-2.png" alt="TUPÃ — Painel lateral de controle">
+              <img src="images/tupa-analista-2.png" alt="TUPÃ — Painel lateral de controle"
+                   data-gallery="tupa-analista"
+                   data-caption="Confiança do motor e camadas da base"
+                   data-explain="Detalhe do painel de controle: confiança do motor 100% Alta, toggles para ativar/desativar camadas (APP curso d'água, APP nascente, Reserva Legal) e exportação em GeoJSON. O diagnóstico automático identificou 18 divergências — incluindo cultivo agrícola dentro da faixa de 30 m de APP.">
               <figcaption>Confiança do motor e camadas da base</figcaption>
               <details class="img-detail">
                 <summary>Ver explicação</summary>
@@ -809,7 +925,10 @@
               </details>
             </figure>
             <figure>
-              <img src="images/tupa-analista-3.png" alt="TUPÃ — Diagnóstico e notificação">
+              <img src="images/tupa-analista-3.png" alt="TUPÃ — Diagnóstico e notificação"
+                   data-gallery="tupa-analista"
+                   data-caption="Diagnóstico expandido + envio de notificação"
+                   data-explain="O diagnóstico detalha cada irregularidade: Cultivo Agrícola em APP em faixa de 30 m, com 0,1 ha de área irregular. Com um clique em Enviar notificação, o analista despacha um alerta automático para o portal do agricultor — que recebe as pendências em linguagem acessível, sem laudo técnico.">
               <figcaption>Diagnóstico expandido + envio de notificação</figcaption>
               <details class="img-detail">
                 <summary>Ver explicação</summary>
@@ -823,7 +942,10 @@
           <div class="img-gallery-label">Portal do Agricultor · Público</div>
           <div class="project-images">
             <figure>
-              <img src="images/tupa-portal-1.png" alt="TUPÃ — Tela inicial do agricultor">
+              <img src="images/tupa-portal-1.png" alt="TUPÃ — Tela inicial do agricultor"
+                   data-gallery="tupa-portal"
+                   data-caption="Tela inicial — busca por número do CAR"
+                   data-explain="Interface pública para o produtor rural. Qualquer agricultor consulta a situação ambiental da propriedade digitando o número do CAR (Cadastro Ambiental Rural). Login integrado com gov.br para acesso a dados sensíveis e solicitação de correções.">
               <figcaption>Tela inicial — busca por número do CAR</figcaption>
               <details class="img-detail">
                 <summary>Ver explicação</summary>
@@ -831,7 +953,10 @@
               </details>
             </figure>
             <figure>
-              <img src="images/tupa-portal-2.png" alt="TUPÃ — Notificações de pendências">
+              <img src="images/tupa-portal-2.png" alt="TUPÃ — Notificações de pendências"
+                   data-gallery="tupa-portal"
+                   data-caption="Notificações de pendências ambientais"
+                   data-explain="Após a análise, o agricultor recebe alertas em linguagem simples: supressão de vegetação nativa dentro da faixa de APP e Reserva Legal abaixo do mínimo do Código Florestal (20%). O sistema elimina laudos técnicos complexos — o produtor entende sua situação sem precisar de agrônomo.">
               <figcaption>Notificações de pendências ambientais</figcaption>
               <details class="img-detail">
                 <summary>Ver explicação</summary>
@@ -839,7 +964,10 @@
               </details>
             </figure>
             <figure>
-              <img src="images/tupa-portal-3.png" alt="TUPÃ — Mapa e dados do imóvel">
+              <img src="images/tupa-portal-3.png" alt="TUPÃ — Mapa e dados do imóvel"
+                   data-gallery="tupa-portal"
+                   data-caption="Mapa satélite e resumo do imóvel"
+                   data-explain="O portal exibe o mapa satélite com as camadas ambientais e resume os dados em cards: município, APP (73,9 ha ao longo de rios e nascentes) e Reserva Legal (584,6 ha). Visualização colorida por tipo de feição para o agricultor entender o que deve preservar.">
               <figcaption>Mapa satélite e resumo do imóvel</figcaption>
               <details class="img-detail">
                 <summary>Ver explicação</summary>
@@ -847,7 +975,10 @@
               </details>
             </figure>
             <figure>
-              <img src="images/tupa-portal-4.png" alt="TUPÃ — Formulário de correção">
+              <img src="images/tupa-portal-4.png" alt="TUPÃ — Formulário de correção"
+                   data-gallery="tupa-portal"
+                   data-caption="Solicitação de correção pelo agricultor"
+                   data-explain="Se o agricultor identificar divergências — um rio que secou, uma encosta que não existe — solicita correção diretamente pelo portal. O pedido é encaminhado ao analista para reavaliação. Esse canal de comunicação bidirecional foi um dos diferenciais do TUPÃ no haCARthon ENAP/Dataprev/SFB.">
               <figcaption>Solicitação de correção pelo agricultor</figcaption>
               <details class="img-detail">
                 <summary>Ver explicação</summary>
@@ -982,5 +1113,92 @@
   <footer>
     Leonardo Heredia - Portfólio profissional 2026. Versão criativa disponível em <a href="cyberpunk.html">cyberpunk.html</a>.
   </footer>
+
+<!-- LIGHTBOX -->
+<div id="lb-modal" class="lb-modal">
+  <div class="lb-wrap">
+    <div class="lb-img-row">
+      <button id="lb-close" class="lb-close" aria-label="Fechar">&times;</button>
+      <button id="lb-prev" class="lb-nav lb-prev" aria-label="Anterior">&#8249;</button>
+      <img id="lb-img" src="" alt="">
+      <button id="lb-next" class="lb-nav lb-next" aria-label="Próxima">&#8250;</button>
+    </div>
+    <div id="lb-dots" class="lb-dots"></div>
+    <div class="lb-info">
+      <div id="lb-caption" class="lb-caption"></div>
+      <div id="lb-explain" class="lb-explain"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  const modal   = document.getElementById('lb-modal');
+  const img     = document.getElementById('lb-img');
+  const caption = document.getElementById('lb-caption');
+  const explain = document.getElementById('lb-explain');
+  const dotsEl  = document.getElementById('lb-dots');
+  const btnClose = document.getElementById('lb-close');
+  const btnPrev  = document.getElementById('lb-prev');
+  const btnNext  = document.getElementById('lb-next');
+
+  let items = [], idx = 0;
+
+  function show(i) {
+    idx = ((i % items.length) + items.length) % items.length;
+    const it = items[idx];
+    img.src = it.src;
+    img.alt = it.alt;
+    caption.textContent = it.caption;
+    explain.textContent = it.explain;
+    dotsEl.innerHTML = items.map((_, k) =>
+      `<div class="lb-dot${k === idx ? ' active' : ''}" data-i="${k}"></div>`
+    ).join('');
+    btnPrev.style.display = items.length > 1 ? 'flex' : 'none';
+    btnNext.style.display = items.length > 1 ? 'flex' : 'none';
+  }
+
+  function open(startIdx) {
+    show(startIdx);
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function close() {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  btnClose.addEventListener('click', close);
+  btnPrev.addEventListener('click', () => show(idx - 1));
+  btnNext.addEventListener('click', () => show(idx + 1));
+  dotsEl.addEventListener('click', e => { const d = e.target.closest('[data-i]'); if (d) show(+d.dataset.i); });
+  modal.addEventListener('click', e => { if (e.target === modal) close(); });
+
+  document.addEventListener('keydown', e => {
+    if (!modal.classList.contains('active')) return;
+    if (e.key === 'Escape')     close();
+    if (e.key === 'ArrowLeft')  show(idx - 1);
+    if (e.key === 'ArrowRight') show(idx + 1);
+  });
+
+  let tx = 0;
+  modal.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+  modal.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - tx;
+    if (Math.abs(dx) > 50) show(dx < 0 ? idx + 1 : idx - 1);
+  });
+
+  document.querySelectorAll('.project-images img[data-gallery]').forEach(el => {
+    el.style.cursor = 'pointer';
+    el.addEventListener('click', () => {
+      const g = el.dataset.gallery;
+      items = Array.from(document.querySelectorAll(`.project-images img[data-gallery="${g}"]`))
+        .map(i => ({ src: i.src, alt: i.alt, caption: i.dataset.caption || '', explain: i.dataset.explain || '' }));
+      open(items.findIndex(i => i.src === el.src));
+    });
+  });
+})();
+</script>
 </body>
 </html>
